@@ -1,0 +1,1 @@
+{{route('adminDeleteRecord', ['id' => 'id'])}}
