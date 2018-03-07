@@ -130,7 +130,7 @@
       })
       $('#deleteUser').click(function (event) {
         var id = $('#id').val();
-        $.post("/final/public/admin/manageStudent/" + id, {"id":id, "_token":$("input[name=_token]").val()}, function(data){
+        $.post("/admin/manageStudent/" + id, {"id":id, "_token":$("input[name=_token]").val()}, function(data){
           $('#confirmation').show();
           $('#deleteUser').hide();
           $('#close').hide();
