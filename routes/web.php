@@ -36,8 +36,11 @@ Route::middleware(['auth'])->group(function ()
             Route::prefix('{id}')->group(function ()
             {
               Route::get('personalData/create', 'PersonalDataController@create')->name('adminCreateStudentPersonalData');
+              Route::post('personalData', 'PersonalDataController@store')->name('adminStoreStudentPersonalData');
+
+              Route::get('familyBackground/create', 'FamilyBackgroundController@create')->name('adminCreateStudentFamilyBackground');
             });
-            // Route::get('{id}/personalData/create', 'PersonalDataController@create')->name('adminCreateStudentPersonalData');
+//             Route::get('{id}/personalData/create', 'PersonalDataController@create')->name('adminCreateStudentPersonalData');
           });
           Route::get('{id}/edit', 'EditStudentController@show')->name('adminEditRecordIndex');
           Route::put('edit/{id}', 'EditStudentController@update')->name('adminEditRecordPut');
