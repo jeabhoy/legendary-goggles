@@ -39,6 +39,9 @@ Route::middleware(['auth'])->group(function ()
               Route::post('personalData', 'PersonalDataController@store')->name('adminStoreStudentPersonalData');
 
               Route::get('familyBackground/create', 'FamilyBackgroundController@create')->name('adminCreateStudentFamilyBackground');
+                Route::post('familyBackground', 'FamilyBackgroundController@store')->name('adminStoreStudentFamilyBackground');
+
+                Route::get('sibling', 'SiblingsController@index')->name('adminIndexSibling');
             });
 //             Route::get('{id}/personalData/create', 'PersonalDataController@create')->name('adminCreateStudentPersonalData');
           });

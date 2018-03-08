@@ -24,18 +24,6 @@ class CreateFamilyBackgroundsTable extends Migration
           $table->string('motherDeceased')->nullable();
           $table->string('motherOccupation')->nullable();
           $table->string('motherContactNo')->nullable();
-          $table->string('sibling1')->nullable();
-          $table->integer('sibling1Age')->nullable();
-          $table->string('sibling1EducationLevel')->nullable();
-          $table->string('sibling2')->nullable();
-          $table->integer('sibling2Age')->nullable();
-          $table->string('sibling2EducationLevel')->nullable();
-          $table->string('sibling3')->nullable();
-          $table->integer('sibling3Age')->nullable();
-          $table->string('sibling3EducationLevel')->nullable();
-          $table->string('sibling4')->nullable();
-          $table->integer('sibling4Age')->nullable();
-          $table->string('sibling4EducationLevel')->nullable();
           $table->string('physicalProblems')->nullable();
           $table->string('allergies')->nullable();
           $table->string('treatmentSought')->nullable();
