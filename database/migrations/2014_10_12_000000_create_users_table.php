@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('users')->insert(['username' => 'punp', 'password' => Hash::make('punp'), 'level' => 'admin', 'fullName' => 'testAdmin', 'avatar' => 'defaultAvatar.png', 'email' => 'admin@gmail.com']);
     }
 
     /**

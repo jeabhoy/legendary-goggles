@@ -53,12 +53,19 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Counseling');
     }
+
     public function violation()
     {
       return $this->hasMany('App\Violation');
     }
+
     public function exitInterview()
     {
       return $this->hasOne('App\ExitInterview');
+    }
+
+    public function sibling()
+    {
+        return $this->hasMany('App\Sibling');
     }
 }
