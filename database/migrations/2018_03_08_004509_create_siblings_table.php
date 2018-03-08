@@ -14,12 +14,11 @@ class CreateSiblingsTable extends Migration
     public function up()
     {
         Schema::create('siblings', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id');
             $table->string('user_id');
             $table->string('name');
             $table->integer('age');
             $table->string('educationalLevel');
-            $table->timestamps();
         });
     }
 
