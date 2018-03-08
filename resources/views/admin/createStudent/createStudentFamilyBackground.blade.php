@@ -28,13 +28,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            STUDENT CUMMULATIVE RECORD
+            FAMILY BACKGROUND
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Manage Student</li>
             <li class="active">Create Student Record</li>
-            <li class="active">Profile</li>
+            <li class="active">Family Background</li>
         </ol>
     </section>
     <!-- Main content -->

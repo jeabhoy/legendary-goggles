@@ -42,6 +42,14 @@ Route::middleware(['auth'])->group(function ()
                 Route::post('familyBackground', 'FamilyBackgroundController@store')->name('adminStoreStudentFamilyBackground');
 
                 Route::get('sibling', 'SiblingsController@index')->name('adminIndexSibling');
+                Route::post('sibling', 'SiblingsController@store')->name('adminStoreSibling');
+                Route::prefix('sibling')->group(function ()
+                {
+                    Route::get('create', 'SiblingsController@create')->name('adminCreateSibling');
+                    Route::get('{siblingId}/edit', 'SiblingsController@edit')->name('adminEditSibling');
+                    Route::put('{siblingId}', 'SiblingsController@update')->name('adminUpdateSibling');
+                    Route::delete('{siblingId}', 'SiblingsController@destroy')->name('adminDeleteSibling');
+                });
             });
 //             Route::get('{id}/personalData/create', 'PersonalDataController@create')->name('adminCreateStudentPersonalData');
           });
