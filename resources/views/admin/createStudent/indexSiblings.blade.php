@@ -28,7 +28,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            STUDENT CUMMULATIVE RECORD
+            SIBLINGS
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -132,7 +132,9 @@
                 </div>
             </div>
             <div class="text-center">
-                <button class="btn btn-lg btn-flat btn-primary center-block">Next</button>
+                <a href="{{route('adminCreateStudentEducationalBackground', ['id' => Request::route('id')])}}">
+                    <button class="btn btn-lg btn-flat btn-primary center-block">Next</button>
+                </a>
             </div>
     </section>
 @endsection
