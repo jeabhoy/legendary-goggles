@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function ()
                 Route::post('educationalBackground', 'EducationalBackgroundController@store')->name('adminStoreStudentEducationalBackground');
 
                 Route::get('structuredInterview/create', 'StructuredInterviewController@create')->name('adminCreateStudentStructuredInterview');
+                Route::post('structuredInterview', 'StructuredInterviewController@store')->name('adminStoreStudentStructuredInterview');
 
             });
           });
