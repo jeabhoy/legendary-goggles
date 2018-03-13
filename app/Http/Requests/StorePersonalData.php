@@ -44,16 +44,16 @@ class StorePersonalData extends FormRequest
         nullable',
             'currentNumber' =>
                 'required|
-        nullable',
+        nullable|sometimes',
             'currentStreetZone' =>
                 'required|
-                nullable',
+                nullable|sometimes',
             'currentMunicipality' =>
                 'required|
-                nullable',
+                nullable|sometimes',
             'currentProvince' =>
                 'required|
-                nullable',
+                nullable|sometimes',
             'permanentNumber' => 'required',
             'permanentStreetZone' => 'required',
             'permanentMunicipality' => 'required',
@@ -83,16 +83,16 @@ class StorePersonalData extends FormRequest
             'authorizeRelationship' => 'required',
             'authorizeContactNumber' => 'required',
             'authPermNumber' =>
-                'required|
+                'required|sometimes|
         nullable',
             'authPermStreetZone' =>
-                'required|
+                'required|sometimes|
         nullable',
             'authPermMunicipality' =>
-                'required|
+                'required|sometimes|
         nullable',
             'authPermProvince' =>
-                'required|
+                'required|sometimes|
         nullable',
             'talents' => 'nullable',
             'curricularActivity1' => 'required',

@@ -50,8 +50,13 @@ Route::middleware(['auth'])->group(function ()
                     Route::put('{siblingId}', 'SiblingsController@update')->name('adminUpdateSibling');
                     Route::delete('{siblingId}', 'SiblingsController@destroy')->name('adminDeleteSibling');
                 });
+
+                Route::get('educationalBackground/create', 'EducationalBackgroundController@create')->name('adminCreateStudentEducationalBackground');
+                Route::post('educationalBackground', 'EducationalBackgroundController@store')->name('adminStoreStudentEducationalBackground');
+
+                Route::get('structuredInterview/create', 'StructuredInterviewController@create')->name('adminCreateStudentStructuredInterview');
+
             });
-//             Route::get('{id}/personalData/create', 'PersonalDataController@create')->name('adminCreateStudentPersonalData');
           });
           Route::get('{id}/edit', 'EditStudentController@show')->name('adminEditRecordIndex');
           Route::put('edit/{id}', 'EditStudentController@update')->name('adminEditRecordPut');
