@@ -62,6 +62,9 @@
                            <li class="active"><a href="#tab_1" data-toggle="tab">Educational Background</a></li>
                            <li class="disabled"><a href="#" data-toggle="tab">Structured Interview</a></li>
                            <li class="disabled"><a href="#" data-toggle="tab">Personality Test</a></li>
+                           @if($user->level == 'College' && $user->exitInterviewTaken == 'false')
+                               <li class="disabled"><a href="#" data-toggle="tab">Exit Interview</a></li>
+                           @endif
                        </ul>
                        <div class="tab-content">
                            <div class="tab-pane active" id="tab_1">

@@ -64,6 +64,10 @@ class PersonalDataController extends Controller
         $personalData->curricular2 = $request->curricularActivity2;
         $personalData->curricular3 = $request->curricularActivity3;
         $personalData->save();
+        $user = (new User)->find($id);
+        $user->fullName = $request->firstName.' '.$request->middleName.' '.$request->lastName;
+        $user->email = $request->email;
+        $user->save();
         return redirect()->route('adminCreateStudentFamilyBackground', ['id' => $id]);
     }
 }

@@ -57,6 +57,9 @@ Route::middleware(['auth'])->group(function ()
                 Route::get('structuredInterview/create', 'StructuredInterviewController@create')->name('adminCreateStudentStructuredInterview');
                 Route::post('structuredInterview', 'StructuredInterviewController@store')->name('adminStoreStudentStructuredInterview');
 
+                Route::get('exitInterview/create', 'ExitInterviewController@create')->name('adminCreateStudentExitInterview');
+                Route::post('exitInterview', 'ExitInterviewController@store')->name('adminStoreStudentExitInterview');
+
             });
           });
           Route::get('{id}/edit', 'EditStudentController@show')->name('adminEditRecordIndex');

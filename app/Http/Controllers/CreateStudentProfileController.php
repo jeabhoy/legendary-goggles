@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\EducationalBackground;
+use App\FamilyBackground;
+use App\Interview;
+use App\PersonalData;
+use App\Sibling;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -47,6 +52,8 @@ class CreateStudentProfileController extends Controller
 		$user->section = $request->section;
 		$user->username = $request->id;
 		$user->id = $request->id;
+		$user->cummulativeRecordTaken = 'false';
+		$user->exitInterviewTaken = 'false';
 		$user->password = Hash::make($request->id);
 		$user->exitInterviewTaken = 'false';
 		if ($request->hasFile('profilePicture'))
@@ -59,6 +66,22 @@ class CreateStudentProfileController extends Controller
 		  $user->avatar = 'defaultAvatar.png';
 		}
 		$user->save();
+		$userEducationalBackground = new EducationalBackground;
+		$userEducationalBackground->id = $request->id;
+        $userEducationalBackground->user_id = $request->id;
+        $userEducationalBackground->save();
+        $userFamilyBackground = new FamilyBackground;
+        $userFamilyBackground->id = $request->id;
+        $userFamilyBackground->user_id = $request->id;
+        $userFamilyBackground->save();
+        $userPersonalData = new PersonalData;
+        $userPersonalData->id = $request->id;
+        $userPersonalData->user_id = $request->id;
+        $userPersonalData->save();
+        $userInterview = new Interview;
+        $userInterview->id = $request->id;
+        $userInterview->user_id = $request->id;
+        $userInterview->save();
 		return redirect()->route('adminCreateStudentPersonalData', ['id' => $request->id]);
 	}
 }

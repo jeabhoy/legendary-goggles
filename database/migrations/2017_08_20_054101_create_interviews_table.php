@@ -16,16 +16,16 @@ class CreateInterviewsTable extends Migration
         Schema::create('interviews', function (Blueprint $table) {
           $table->string('id');
           $table->string('user_id');
-          $table->string('characteristics')->nullable();
-          $table->string('concern')->nullable();
+          $table->text('characteristics')->nullable();
+          $table->text('concern')->nullable();
           $table->string('fatherInter')->nullable();
           $table->string('motherInter')->nullable();
           $table->string('siblingsInter')->nullable();
           $table->string('relativesInter')->nullable();
           $table->string('friendsInter')->nullable();
-          $table->string('describeFather')->nullable();
-          $table->string('describeMother')->nullable();
-          $table->string('describeFamily')->nullable();
+          $table->text('describeFather')->nullable();
+          $table->text('describeMother')->nullable();
+          $table->text('describeFamily')->nullable();
           $table->string('radioStrength')->nullable();
           $table->string('radioWeakness')->nullable();
           $table->string('decideEnroll')->nullable();

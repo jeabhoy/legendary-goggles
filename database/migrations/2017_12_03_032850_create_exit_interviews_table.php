@@ -14,27 +14,27 @@ class CreateExitInterviewsTable extends Migration
     public function up()
     {
         Schema::create('exit_interviews', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id');
             $table->string('user_id')->nullable();
             $table->string('department')->nullable();
-            $table->string('attendedOther')->nullable();
-            $table->string('attracted')->nullable();
-            $table->string('chooseToStudy')->nullable();
-            $table->string('bestPartsOfPUNP')->nullable();
-            $table->string('worstPartsOfPUNP')->nullable();
-            $table->string('favoriteSubject')->nullable();
-            $table->string('leastFavoriteSubject')->nullable();
-            $table->string('likeBest')->nullable();
-            $table->string('likeLeast')->nullable();
-            $table->string('workWhileSchool')->nullable();
-            $table->string('changesYouSuggest')->nullable();
-            $table->string('bestInstructor')->nullable();
-            $table->string('leastInstructor')->nullable();
-            $table->string('immediatePlans')->nullable();
-            $table->string('review')->nullable();
-            $table->string('choosePUNP')->nullable();
-            $table->string('comments')->nullable();
-            $table->string('otherComments')->nullable();
+            $table->text('attendedOther')->nullable();
+            $table->text('attracted')->nullable();
+            $table->text('chooseToStudy')->nullable();
+            $table->text('bestPartsOfPUNP')->nullable();
+            $table->text('worstPartsOfPUNP')->nullable();
+            $table->text('favoriteSubject')->nullable();
+            $table->text('leastFavoriteSubject')->nullable();
+            $table->text('likeBest')->nullable();
+            $table->text('likeLeast')->nullable();
+            $table->text('workWhileSchool')->nullable();
+            $table->text('changesYouSuggest')->nullable();
+            $table->text('bestInstructor')->nullable();
+            $table->text('leastInstructor')->nullable();
+            $table->text('immediatePlans')->nullable();
+            $table->text('review')->nullable();
+            $table->text('choosePUNP')->nullable();
+            $table->text('comments')->nullable();
+            $table->text('otherComments')->nullable();
             $table->timestamps();
         });
     }
