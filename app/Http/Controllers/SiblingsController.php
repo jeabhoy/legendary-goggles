@@ -12,7 +12,8 @@ class SiblingsController extends Controller
     public function index($id)
     {
         $userSiblings = (new Sibling)->all()->where('id', $id);
-        return view('admin.createStudent.indexSiblings', compact('userSiblings'));
+        $user = (new User)->find($id);
+        return view('admin.createStudent.indexSiblings', compact('userSiblings', 'user'));
     }
 
     public function create($id)
