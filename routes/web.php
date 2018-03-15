@@ -22,6 +22,23 @@ Route::middleware(['auth'])->group(function ()
 {
   Route::middleware(['access'])->group(function ()
   {
+      Route::prefix('user/{id}')->group(function ()
+      {
+          Route::get('profile', 'UserProfilePageController@show')->name('userProfileShow');
+
+          Route::get('counseling', 'CounselingPageController@show')->name('counselingIndex');
+          Route::post('counseling', 'CounselingPageController@store')->name('counselingCreate');
+          Route::prefix('counseling')->group(function () {
+              Route::put('update', 'CounselingPageController@update')->name('counselingUpdate');
+              Route::delete('delete', 'CounselingPageController@destroy')->name('counselingDestroy');
+          });
+          Route::get('violation', 'ViolationPageController@show')->name('violationIndex');
+          Route::post('violation', 'ViolationPageController@store')->name('violationCreate');
+          Route::prefix('violation')->group(function () {
+              Route::put('update', 'ViolationPageController@update')->name('violationUpdate');
+              Route::delete('delete', 'ViolationPageController@destroy')->name('violationDestroy');
+          });
+      });
     Route::prefix('admin')->group(function () {
         Route::view('dashboard', 'admin.dashboard')->name('adminDashboardIndex');
         Route::get('manageStudent', 'ManageStudentController@index')->name('adminManageStudentIndex');
@@ -71,33 +88,6 @@ Route::middleware(['auth'])->group(function ()
 
   Route::middleware(['userAccess'])->group(function ()
   {
-    Route::prefix('user/{id}')->group(function () 
-      {
-        Route::get('profile', 'UserProfilePageController@show')->name('userProfileShow');
-        Route::get('interview', 'InterviewPageController@show')->name('userInterviewShow');
-        Route::prefix('interview')->group(function ()
-        {
-          Route::middleware(['exitInterviewChecker'])->group(function ()
-          {
-            Route::get('exitInterview', 'ExitInterviewPageController@show')->name('exitInterviewIndex');
-            Route::post('exitInterview', 'ExitInterviewPageController@store')->name('exitInterviewCreate');
-          });
-        });
-        Route::middleware(['access'])->group(function ()
-        {
-          Route::get('counseling', 'CounselingPageController@show')->name('counselingIndex');
-          Route::post('counseling', 'CounselingPageController@store')->name('counselingCreate');
-          Route::prefix('counseling')->group(function () {
-            Route::put('update', 'CounselingPageController@update')->name('counselingUpdate');
-            Route::delete('delete', 'CounselingPageController@destroy')->name('counselingDestroy');
-          });
-          Route::get('violation', 'ViolationPageController@show')->name('violationIndex');
-          Route::post('violation', 'ViolationPageController@store')->name('violationCreate');
-          Route::prefix('violation')->group(function () {
-            Route::put('update', 'ViolationPageController@update')->name('violationUpdate');
-            Route::delete('delete', 'ViolationPageController@destroy')->name('violationDestroy');
-          });
-        });
-    });
+
   });
 });

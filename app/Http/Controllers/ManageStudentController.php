@@ -36,7 +36,7 @@ class ManageStudentController extends Controller
 
   public function getDataTable()
   {
-    $query = User::select('fullName', 'level', 'id');
+    $query = (new User)->select('fullName', 'level', 'id');
     return datatables($query)
     ->addColumn('action', function ($query) {
                 if ($query->level == 'Admin') {

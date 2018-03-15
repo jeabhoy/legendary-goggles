@@ -478,6 +478,22 @@ class CreateRecordController extends Controller
     $user->password = Hash::make($request->id);
     $user->exitInterviewTaken = 'false';
     $user->save();
+      $userEducationalBackground = new EducationalBackground;
+      $userEducationalBackground->id = $request->id;
+      $userEducationalBackground->user_id = $request->id;
+      $userEducationalBackground->save();
+      $userFamilyBackground = new FamilyBackground;
+      $userFamilyBackground->id = $request->id;
+      $userFamilyBackground->user_id = $request->id;
+      $userFamilyBackground->save();
+      $userPersonalData = new PersonalData;
+      $userPersonalData->id = $request->id;
+      $userPersonalData->user_id = $request->id;
+      $userPersonalData->save();
+      $userInterview = new Interview;
+      $userInterview->id = $request->id;
+      $userInterview->user_id = $request->id;
+      $userInterview->save();
     return redirect()->route('adminManageStudentIndex')->with('status', 'Record successfully added!');
   }
 }

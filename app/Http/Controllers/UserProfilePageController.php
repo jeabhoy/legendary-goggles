@@ -9,7 +9,7 @@ class UserProfilePageController extends Controller
 {
     public function show($id)
     {
-      $item = User::with('PersonalData', 'FamilyBackground', 'EducationalBackground')->findOrFail($id);
+      $item = User::with('PersonalData', 'FamilyBackground', 'EducationalBackground', 'Sibling')->findOrFail($id);
       $array = json_decode($item, true);
       // $item = User::findOrFail($id);
       return view('user.profile', compact('array'));

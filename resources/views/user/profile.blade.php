@@ -8,7 +8,7 @@
       </a>
     </li>
     <li class="treeview">
-      <a href="{{route('userInterviewShow', ['id' => $array['id']])}}">
+      <a href="#">
         <i class="fa fa-commenting-o"></i>
         <span>Structured Interview</span>
       </a>
@@ -18,7 +18,13 @@
         <i class="fa fa-pencil"></i> <span>Test</span>
       </a>
     </li>
-    @if(Auth::user()->level == 'Admin')
+    @if($array['exitInterviewTaken'] == 'true')
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-graguation-cap"></i> <span>Exit Interview</span>
+              </a>
+          </li>
+        @endif
       <li class="treeview">
         <a href="{{route('counselingIndex', ['id' => $array['id']])}}">
           <i class="fa fa-user-secret"></i> <span>Counseling</span>
@@ -29,7 +35,6 @@
           <i class="fa fa-fire"></i> <span>Violations</span>
         </a>
       </li>
-    @endif
   </ul>
 @endsection
 @section('content')
@@ -39,22 +44,13 @@
     Profile
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>
     <li class="active">Profile</li>
   </ol>
 </section>
 
 <!-- Main content -->
 <section class="content">
-  @if(Auth::user()->level == 'College' && Auth::user()->exitInterviewTaken == 'False')
-    @include('user.components.testAlert')
-  @endif
-  @if (session('status'))
-    <div class="alert alert-success alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><i class="icon fa fa-check"></i>{{ session('status') }}</h4>
-    </div>
-  @endif
   <div class="row">
         <div class="col-md-3">
 
@@ -112,6 +108,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#personalData" data-toggle="tab">Personal Data</a></li>
               <li><a href="#familyBackground" data-toggle="tab">Family Background</a></li>
+                <li><a href="#siblings" data-toggle="tab">Siblings</a></li>
               <li><a href="#educationalBackground" data-toggle="tab">Educational Background</a></li>
             </ul>
             <div class="tab-content">
@@ -430,94 +427,6 @@
                     </div>
                   </div>
                 @endif
-                @if($array['family_background']['sibling1'] != NULL || $array['family_background']['sibling2'] != NULL || $array['family_background']['sibling3'] != NULL || $array['family_background']['sibling4'] != NULL)
-                  <h5>Siblings</h5>
-                  <div class="table-responsive no-padding">
-                    <table class="table table-hover">
-                      <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Educational Level</th>
-                      </tr>
-                      @if($array['family_background']['sibling1'] != NULL)
-                        <tr>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling1']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling1Age']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling1EducationLevel']}}</span>
-                            </div>
-                          </td>
-                        </tr>
-                      @endif
-                      @if($array['family_background']['sibling2'] != NULL)
-                        <tr>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling2']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling2Age']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling2EducationLevel']}}</span>
-                            </div>
-                          </td>
-                        </tr>
-                      @endif
-                      @if($array['family_background']['sibling3'] != NULL)
-                        <tr>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling3']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling3Age']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling3EducationLevel']}}</span>
-                            </div>
-                          </td>
-                        </tr>
-                      @endif
-                      @if($array['family_background']['sibling4'] != NULL)
-                        <tr>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling4']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling4Age']}}</span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <span>{{$array['family_background']['sibling4EducationLevel']}}</span>
-                            </div>
-                          </td>
-                        </tr>
-                      @endif
-                    </table>
-                  </div>
-                @endif
                 <div class="row">
                   @if($array['family_background']['physicalProblems'] != NULL)
                     <div class="col-md-6">
@@ -555,6 +464,23 @@
               </div>
               <!-- /.tab-pane -->
 
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="siblings">
+                    <table class="table table-hover table-responsive">
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Educational Level</th>
+                        </tr>
+                        @foreach($array['sibling'] as $sibling)
+                            <tr>
+                                <td>{{$sibling['name']}}</td>
+                                <td>{{$sibling['age']}}</td>
+                                <td>{{$sibling['educationalLevel']}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
               <div class="tab-pane" id="educationalBackground">
                 <div class="table-responsive no-padding">
                   <table class="table table-hover">
