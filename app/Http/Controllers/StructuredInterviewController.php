@@ -42,6 +42,8 @@ class StructuredInterviewController extends Controller
         {
             return redirect()->route('adminCreateStudentExitInterview', ['id' => $id]);
         }
+        $user->cummulativeRecordTaken = 'true';
+        $user->save();
         return redirect()->route('adminManageStudentIndex')->with('status', 'Record Successfully added!');
     }
 }

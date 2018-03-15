@@ -66,22 +66,6 @@ class CreateStudentProfileController extends Controller
 		  $user->avatar = 'defaultAvatar.png';
 		}
 		$user->save();
-		$userEducationalBackground = new EducationalBackground;
-		$userEducationalBackground->id = $request->id;
-        $userEducationalBackground->user_id = $request->id;
-        $userEducationalBackground->save();
-        $userFamilyBackground = new FamilyBackground;
-        $userFamilyBackground->id = $request->id;
-        $userFamilyBackground->user_id = $request->id;
-        $userFamilyBackground->save();
-        $userPersonalData = new PersonalData;
-        $userPersonalData->id = $request->id;
-        $userPersonalData->user_id = $request->id;
-        $userPersonalData->save();
-        $userInterview = new Interview;
-        $userInterview->id = $request->id;
-        $userInterview->user_id = $request->id;
-        $userInterview->save();
 		return redirect()->route('adminCreateStudentPersonalData', ['id' => $request->id]);
 	}
 }

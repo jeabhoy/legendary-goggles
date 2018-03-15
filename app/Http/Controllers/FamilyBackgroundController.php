@@ -21,11 +21,25 @@ class FamilyBackgroundController extends Controller
         $familyBackground->id = $id;
         $familyBackground->user_id = $id;
         $familyBackground->fatherName = $request->fatherName;
-        $familyBackground->fatherDeceased = $request->fatherDeceased;
+        if ($request->fatherDeceased == 'True')
+        {
+            $familyBackground->fatherDeceased = $request->fatherDeceased;
+        }
+        else
+        {
+            $familyBackground->fatherDeceased = 'False';
+        }
         $familyBackground->fatherOccupation = $request->fatherOccupation;
         $familyBackground->fatherContactNo = $request->fatherContactNumber;
         $familyBackground->motherName = $request->motherName;
-        $familyBackground->motherDeceased = $request->motherDeceased;
+        if ($request->motherDeceased == 'True')
+        {
+            $familyBackground->motherDeceased = $request->motherDeceased;
+        }
+        else
+        {
+            $familyBackground->motherDeceased = 'False';
+        }
         $familyBackground->motherOccupation = $request->motherOccupation;
         $familyBackground->motherContactNo = $request->motherContactNumber;
         $familyBackground->physicalProblems = $request->physicalProblems;
