@@ -49,4 +49,11 @@ class FamilyBackgroundController extends Controller
         $familyBackground->save();
         return redirect()->route('adminIndexSibling', ['id' => $id]);
     }
+
+    public function edit($familyBackgroundId, $id)
+    {
+        $userFamilyBackground = (new FamilyBackground)->find($familyBackgroundId);
+        $user = (new User)->find($id);
+        return view('admin.editStudent.familyBackground', compact('userFamilyBackground', 'user'));
+    }
 }
