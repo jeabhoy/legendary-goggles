@@ -47,7 +47,7 @@ class ManageStudentController extends Controller
                       <a href="'.route('userProfileShow', ['id' => $query->id]).'" target="_blank"><button type="button" class="btn btn-default btn-xs"><i class="fa fa-user"></i> View</button></a>
                     </div>
                     <div class="btn-group">
-                      <a href="'.route('adminEditRecordIndex', ['id' => $query->id]).'"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</button></a>
+                      <a href="'.route('adminEditProfile', ['id' => $query->id]).'"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</button></a>
                     </div>
                     <div class="btn-group placeholder">
                       <input type="hidden" id="userId" value="'.$query->id.'">

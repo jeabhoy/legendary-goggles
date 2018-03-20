@@ -79,7 +79,18 @@ Route::middleware(['auth'])->group(function ()
 
             });
           });
-          Route::get('{id}/edit', 'EditStudentController@show')->name('adminEditRecordIndex');
+            Route::prefix('user')->group(function ()
+            {
+                Route::get('{id}/edit', 'ProfileController@edit')->name('adminEditProfile');
+                Route::put('{id}', 'ProfileController@update')->name('adminUpdateProfile');
+                Route::prefix('{id}')->group(function ()
+                {
+                    Route::get('personalData/{personalDataId}/edit', 'PersonalDataController@edit')->name('adminEditPersonalData');
+                    Route::put('personalData/{personalDataId}', 'PersonalDataController@update')->name('adminUpdatePersonalData');
+
+                    Route::get('familyBackground/{familyBackgroundId}/edit', 'FamilyBackgroundController@edit')->name('adminEditFamilyBackground');
+                });
+            });
           Route::put('edit/{id}', 'EditStudentController@update')->name('adminEditRecordPut');
           Route::post('{id}', 'ManageStudentController@destroy')->name('adminDeleteRecord');
         });
