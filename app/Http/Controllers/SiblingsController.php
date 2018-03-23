@@ -11,7 +11,8 @@ class SiblingsController extends Controller
 {
     public function index($id)
     {
-        $userSiblings = (new Sibling)->all()->where('id', $id);
+        $userSiblings = (new Sibling)->where('user_id', $id)->get();
+//        return $userSiblings;
         $user = (new User)->find($id);
         return view('admin.createStudent.indexSiblings', compact('userSiblings', 'user'));
     }
@@ -25,7 +26,6 @@ class SiblingsController extends Controller
     public function store(StoreSibling $request, $id)
     {
         $sibling = new Sibling;
-        $sibling->id = $id;
         $sibling->user_id = $id;
         $sibling->name = $request->siblingName;
         $sibling->age = $request->siblingAge;
@@ -34,9 +34,9 @@ class SiblingsController extends Controller
         return redirect()->route('adminIndexSibling', ['id' => $id]);
     }
 
-    public function edit($siblingId)
+    public function edit($id)
     {
-        $sibling = (new Sibling)->find($siblingId);
+        $sibling = (new Sibling)->find($id);
         return view('admin.createStudent.sibling.editSibling', compact('sibling'));
     }
 

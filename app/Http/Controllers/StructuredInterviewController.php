@@ -37,13 +37,13 @@ class StructuredInterviewController extends Controller
         $interview->factorInfluenced = $request->factorInfluenced;
         $interview->otherFactor = $request->factorInfluencedOthers;
         $interview->save();
-        $user = (new User)->find($id);
-        if ($user->level == 'College' && $user->exitInterviewTaken == 'false')
-        {
-            return redirect()->route('adminCreateStudentExitInterview', ['id' => $id]);
-        }
-        $user->cummulativeRecordTaken = 'true';
-        $user->save();
-        return redirect()->route('adminManageStudentIndex')->with('status', 'Record Successfully added!');
+//        $user = (new User)->find($id);
+//        if ($user->level == 'College' && $user->exitInterviewTaken == 'false')
+//        {
+//            return redirect()->route('adminCreateStudentExitInterview', ['id' => $id]);
+//        }
+//        $user->cummulativeRecordTaken = 'true';
+//        $user->save();
+        return redirect()->route('adminCreateStudentPersonalityTest', ['id' => $id]);
     }
 }

@@ -40,7 +40,8 @@ Route::middleware(['auth'])->group(function ()
           });
       });
     Route::prefix('admin')->group(function () {
-        Route::view('dashboard', 'admin.dashboard')->name('adminDashboardIndex');
+//        Route::view('dashboard', 'admin.dashboard')->name('adminDashboardIndex');
+        Route::get('dashboard', 'DashboardController@index')->name('adminDashboardIndex');
         Route::get('manageStudent', 'ManageStudentController@index')->name('adminManageStudentIndex');
         Route::get('manageStudentAjax', 'ManageStudentController@getDataTable')->name('getDataTable');
         Route::prefix('manageStudent')->group(function () {
@@ -73,6 +74,9 @@ Route::middleware(['auth'])->group(function ()
 
                 Route::get('structuredInterview/create', 'StructuredInterviewController@create')->name('adminCreateStudentStructuredInterview');
                 Route::post('structuredInterview', 'StructuredInterviewController@store')->name('adminStoreStudentStructuredInterview');
+
+                Route::get('personalityTest/create', 'PersonalityTestController@create')->name('adminCreateStudentPersonalityTest');
+                Route::post('personalityTest', 'PersonalityTestController@store')->name('adminStoreStudentPersonalityTest');
 
                 Route::get('exitInterview/create', 'ExitInterviewController@create')->name('adminCreateStudentExitInterview');
                 Route::post('exitInterview', 'ExitInterviewController@store')->name('adminStoreStudentExitInterview');

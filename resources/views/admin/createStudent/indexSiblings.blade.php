@@ -33,7 +33,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Manage Student</li>
-            <li class="active">Create Student Record</li>
+            <li class="active">Edit Student Record</li>
             <li class="active">Siblings</li>
         </ol>
     </section>
