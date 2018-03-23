@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Sibling');
     }
+
+    public function personalityTest()
+    {
+        return $this->hasOne('App\PersonalityTest');
+    }
 }
